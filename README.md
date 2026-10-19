@@ -1,12 +1,33 @@
 # 转转 FileFlow
 
-[在线使用](https://estebanfranciscowei.github.io/fileflow/)
-
-## GitHub Pages 自动部署
-
-推送到 `main` 后，GitHub Actions 会安装锁定依赖、构建转换组件，并将 `dist/` 发布到 GitHub Pages。仓库 Settings → Pages 的 Source 使用 GitHub Actions。也可以在 Actions 页手动运行发布工作流。所有资源均使用相对路径，支持 `/fileflow/` 项目路径。
-
 面向手机、平板与电脑的文件转换工具，默认进入 PDF 转 Word。文件在当前浏览器内处理，不上传文件，不需要转换服务账号或 API 密钥。
+
+[网站地址](https://estebanfranciscowei.github.io/fileflow/) · [发布状态](https://github.com/estebanfranciscowei/fileflow/actions)
+
+网站仅在 Pages 发布成功后可访问。仓库上传成功不等于网站已上线；没有成功的发布记录时，地址可能返回 404。README 是项目说明，真正的网页入口是发布分支根目录中的 `index.html`。
+
+## GitHub Pages 发布方式
+
+本仓库统一使用预编译文件的分支发布。Settings → Pages 应保持以下设置：
+
+| 设置 | 值 |
+| --- | --- |
+| Source | Deploy from a branch |
+| Branch | gh-pages |
+| Folder | /(root) |
+
+`main` 保存源码，`gh-pages` 保存网站文件。发布目录是 `gh-pages` 的根目录，含 `index.html`、`office.js`、`vendor/` 和 `.nojekyll`，不使用 `/docs`。
+
+更新网站时，在已登录 GitHub 的本地终端执行：
+
+```powershell
+npm ci
+npm run deploy:pages
+```
+
+发布命令会重新构建，将 `dist/` 的完整内容同步到 `gh-pages`，通过正常推送更新，保留发布历史，不强制覆盖远程提交。之后由 GitHub Pages 内置流程发布。命令上传完成后仍需查看 [Actions 的 pages build and deployment](https://github.com/estebanfranciscowei/fileflow/actions) 是否成功。
+
+只推送 `main` 不会自动更新网站。仓库不再使用另一套自定义 Pages 发布工作流。所有资源均使用相对路径，支持 `/fileflow/` 项目路径。
 
 ## 文档转换
 
