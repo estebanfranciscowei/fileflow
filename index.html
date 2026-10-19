@@ -4,7 +4,7 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f7f9fc"><meta name="description" content="转转 FileFlow：手机、电脑都能用的 PDF 转 Word、Word 转 PDF、PDF 合并拆分与图片转换工具。文件在浏览器本地处理，无需上传。">
   <title>转转 FileFlow · 让文件，自由转换</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><script src="downloads.js?v=20261020" defer></script><script src="app.js?v=20261020-save" defer></script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><script src="downloads.js?v=20261020-2" defer></script><script src="app.js?v=20261020-save2" defer></script>
 </head>
 <body>
 <svg class="svg-library" xmlns="http://www.w3.org/2000/svg"><defs>
@@ -71,10 +71,10 @@
   <section class="benefits"><div><span class="benefit-symbol">↗</span><span><b>打开即用</b><small>无需安装，随时开始</small></span></div><div><svg><use href="#i-shield"/></svg><span><b>隐私优先</b><small>本地转换，文件不上传</small></span></div><div><span class="devices-icon">▱</span><span><b>大小屏，都顺手</b><small>手机、平板、电脑都能用</small></span></div></section>
  </section>
  <section id="history-view" hidden><div class="history-intro"><div class="eyebrow">YOUR RECENT ACTIVITY</div><h1>每一次转换，<span>都有迹可循。</span></h1><p>仅在当前设备保存最近 30 条记录，不保留文件内容。</p></div><div class="panel history-panel"><div class="queue-heading"><h3>最近转换</h3><button id="clear-history">清除记录</button></div><div id="history-list"></div></div></section>
- <footer><span>© <span id="year"></span> 转转 FileFlow</span><span>让每一个格式，都有更多可能。<span class="footer-dot">✦</span></span><button id="privacy-open">隐私说明 <svg><use href="#i-arrow"/></svg></button></footer>
+ <footer><span>© <span id="year"></span> 转转 FileFlow · 10.20.2</span><span>让每一个格式，都有更多可能。<span class="footer-dot">✦</span></span><button id="privacy-open">隐私说明 <svg><use href="#i-arrow"/></svg></button></footer>
  </main>
 </div>
-<dialog id="help-dialog"><div class="dialog-heading"><h2>简单三步，轻松转换</h2><button class="icon-button" data-close aria-label="关闭"><svg><use href="#i-close"/></svg></button></div><div class="help-steps"><p><b>01 选择文件</b>选择左侧文件类型，点击上传或拖入文件。手机上可直接从照片或文件中选择。</p><p><b>02 设置格式</b>选择目标格式。图片可调整质量与尺寸；选择 PDF 时，会将全部图片合成一份文档。</p><p><b>03 转换并下载</b>点击开始转换，完成后点“保存”。手机支持时会打开系统文件分享：iPhone 选择“存储到文件”，安卓选择保存文件的应用。多份结果可一次保存为 ZIP。切换到另一浏览器后需要重新转换，文件不会跟随跳转。</p></div><div class="info-box">支持 PDF 转 Word（.docx）、Word（.docx）转 PDF、PDF 合并／拆分／提取页面／转 JPG，并保留图片、文本和 CSV／JSON 转换。可编辑 Word 模式提取文字，复杂表格与分栏可能需调整；保留版式模式输出页面图片，不可编辑。Word 转 PDF 为图片页，文字不可选取。扫描件 OCR、旧版 .doc、Excel、PPT 和视频转换暂未提供。</div><button class="primary dialog-confirm" data-close>明白了，开始使用</button></dialog>
+<dialog id="help-dialog"><div class="dialog-heading"><h2>简单三步，轻松转换</h2><button class="icon-button" data-close aria-label="关闭"><svg><use href="#i-close"/></svg></button></div><div class="help-steps"><p><b>01 选择文件</b>选择左侧文件类型，点击上传或拖入文件。手机上可直接从照片或文件中选择。</p><p><b>02 设置格式</b>选择目标格式。图片可调整质量与尺寸；选择 PDF 时，会将全部图片合成一份文档。</p><p><b>03 转换并下载</b>点击开始转换，完成后点“保存”。安卓会在当前浏览器下载；iPhone 支持时会打开系统分享，选择“存储到文件”。下载无反应可点“保存遇到问题？”尝试兼容下载。多份结果可一次保存为 ZIP。切换到另一浏览器后需要重新转换，文件不会跟随跳转。</p></div><div class="info-box">支持 PDF 转 Word（.docx）、Word（.docx）转 PDF、PDF 合并／拆分／提取页面／转 JPG，并保留图片、文本和 CSV／JSON 转换。可编辑 Word 模式提取文字，复杂表格与分栏可能需调整；保留版式模式输出页面图片，不可编辑。Word 转 PDF 为图片页，文字不可选取。扫描件 OCR、旧版 .doc、Excel、PPT 和视频转换暂未提供。</div><button class="primary dialog-confirm" data-close>明白了，开始使用</button></dialog>
 <dialog id="privacy-dialog"><div class="dialog-heading"><h2>你的文件，留在你的设备</h2><button class="icon-button" data-close aria-label="关闭"><svg><use href="#i-close"/></svg></button></div><p>转换完全在浏览器内完成，我们不会将你选择的文件上传到服务器。关闭或刷新页面后，内存中的源文件与转换结果会释放。</p><p>「最近转换」仅在此浏览器保存文件名称、格式、大小和转换时间。你可以随时清除记录。请不要使用不受信任的 SVG 文件。</p><button class="primary dialog-confirm" data-close>知道了</button></dialog>
 <div id="toast" role="status" aria-live="polite"></div>
 </body></html>
