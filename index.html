@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f9fc"><meta name="description" content="转转 FileFlow：手机、电脑都能用的 PDF 转 Word、Word 转 PDF、PDF 合并拆分与图片转换工具。文件在浏览器本地处理，无需上传。">
+  <title>转转 FileFlow · 让文件，自由转换</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><script src="app.js" defer></script>
+</head>
+<body>
+<svg class="svg-library" xmlns="http://www.w3.org/2000/svg"><defs>
+ <symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 7h15m-4-4 4 4-4 4M20 17H5m4-4-4 4 4 4"/></symbol>
+ <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1.5"/><path d="m4 17 5-5 4 4 3-3 5 5"/></symbol>
+ <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Zm0 0v6h6M8 13h8m-8 4h6"/></symbol>
+ <symbol id="i-data" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 9h18M9 9v12m6-12v12M3 15h18"/></symbol>
+ <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+ <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/><path d="m8 12 3 3 5-6"/></symbol>
+ <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></symbol>
+ <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+ <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></symbol>
+ <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.1 9a3 3 0 1 1 5.8 1c-.7 1-2.9 1.5-2.9 3m0 3v.1"/></symbol>
+ <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+ <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+ <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/></symbol>
+</defs></svg>
+<header class="header"><div class="header-inner">
+ <a class="brand" href="./" aria-label="转转 FileFlow 首页"><span class="brand-mark"><svg><use href="#i-swap"/></svg></span><b>转转<span class="brand-en">FileFlow</span></b></a>
+ <nav class="top-nav" aria-label="主导航"><button class="top-link active" data-view="tools">转换工具</button><button class="top-link" data-view="history">最近转换</button></nav>
+ <div class="header-right"><span class="local-status"><i></i>本地处理，安心转换</span><button class="help-button" id="help-open" aria-label="使用帮助"><svg><use href="#i-help"/></svg><span>使用帮助</span></button></div>
+</div></header>
+<div class="workspace">
+ <aside class="sidebar"><div class="sidebar-title">工作空间</div>
+  <button class="side-item active" data-category="pdfword" aria-label="PDF 转 Word"><svg><use href="#i-doc"/></svg><span>PDF 转 Word</span><span class="side-count hot-label">常用</span></button>
+  <button class="side-item" data-category="wordpdf" aria-label="Word 转 PDF"><svg><use href="#i-doc"/></svg><span>Word 转 PDF</span></button>
+  <button class="side-item" data-category="pdftools" aria-label="PDF 工具"><svg><use href="#i-doc"/></svg><span>PDF 工具</span><span class="side-count">04</span></button>
+  <button class="side-item" data-category="image"><svg><use href="#i-image"/></svg><span>图片转换</span><span class="side-count">06</span></button>
+  <button class="side-item" data-category="document"><svg><use href="#i-doc"/></svg><span>文本转换</span><span class="side-count">03</span></button>
+  <button class="side-item" data-category="data"><svg><use href="#i-data"/></svg><span>数据转换</span><span class="side-count">02</span></button>
+  <div class="side-divider"></div><button class="side-item" data-view="history"><svg><use href="#i-clock"/></svg><span>最近转换</span></button>
+  <div class="privacy-card"><div class="privacy-icon"><svg><use href="#i-shield"/></svg></div><b>你的文件，只属于你</b><p>文件始终留在你的设备，<br>无需上传，不留云端副本。</p><span><i></i> 100% 本地处理</span></div>
+  <div class="sidebar-bottom">少一点繁琐，多一点流畅。<br><span>MADE FOR YOUR EVERYDAY</span></div>
+ </aside>
+ <main>
+ <section id="tools-view">
+  <div class="intro"><div><div class="eyebrow"><span></span> YOUR EVERYDAY DOCUMENT TOOLS</div><h1>让文档，<span>自由转换。</span></h1><p>PDF、Word，工作里最常用的格式，一站轻松处理。</p></div><div class="intro-art" aria-hidden="true"><span class="art-orbit"></span><span class="art-file art-file-back">WORD<span></span></span><span class="art-file art-file-front"><svg><use href="#i-doc"/></svg><b>PDF</b></span><span class="art-swap"><svg><use href="#i-swap"/></svg></span><span class="art-star">✧</span><i></i></div></div>
+  <div class="converter-top"><h2 id="category-heading"><svg><use href="#i-doc"/></svg>PDF 转 Word</h2><span class="small-note"><svg><use href="#i-shield"/></svg>无需上传 · 本地转换</span></div>
+  <div class="conversion-grid">
+   <section class="upload-panel panel"><div class="panel-heading"><h3><span class="step">1</span>添加文件</h3><span>支持批量转换</span></div>
+    <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-label="选择或拖入文件"><div class="upload-art" aria-hidden="true"><span class="mini-file back"></span><span class="mini-file front"><svg><use href="#i-upload"/></svg></span><span class="upload-plus">+</span></div><h3>把文件拖到这里</h3><p id="upload-guidance">请选择需要转换为 Word 的 PDF 文件</p><button class="primary choose-button" id="choose-files"><svg><use href="#i-upload"/></svg>选择文件<span>＋</span></button><p class="upload-limit">每个文件最大 50 MB · 一次最多 20 个</p><div class="supported-formats" id="supported-formats"></div></div>
+    <input id="file-input" type="file" multiple hidden><div class="upload-foot"><span><svg><use href="#i-shield"/></svg>文件不会离开你的设备</span><button id="try-sample">试试示例文件 <span>↗</span></button></div>
+   </section>
+   <section class="settings-panel panel"><div class="panel-heading"><h3><span class="step">2</span>转换设置</h3><svg class="settings-icon"><use href="#i-swap"/></svg></div>
+    <label class="field-label" for="format-select">转换为 <span>输出格式</span></label><select id="format-select"></select><div id="format-options" class="format-options"></div><p id="format-description" class="format-description"></p>
+    <div id="image-settings"><div class="quality-label"><label for="quality">图片质量</label><output id="quality-value">90<span>%</span></output></div><input id="quality" type="range" min="10" max="100" value="90"><div class="range-captions"><span>更小体积</span><span>更高清晰度</span></div><label class="field-label size-label" for="image-size">输出尺寸</label><select id="image-size"><option value="0">保持原始尺寸</option><option value="1920">最长边 1920 px</option><option value="1280">最长边 1280 px</option><option value="800">最长边 800 px</option></select></div>
+    <div id="text-settings" hidden><div class="info-box">保留 UTF-8 中文编码。数据转换支持 CSV 引号、逗号与换行字段。</div></div>
+    <div id="office-settings">
+     <div id="pdfword-settings"><label class="field-label" for="word-mode">转换模式</label><select id="word-mode"><option value="editable">可编辑文字 · 适合文字版 PDF</option><option value="layout">保留版式 · 每页为图片，不可编辑</option></select><div id="pdfword-note" class="office-note"></div></div>
+     <div id="wordpdf-note" class="office-note" hidden>浏览器按页面外观生成 PDF，保留可见文字、图片与表格，输出文字不可选取。字体与复杂排版可能有差异。仅支持 .docx，旧版 .doc 请先另存。</div>
+     <div id="pdf-tools-settings" hidden><div id="page-range-field"><label class="field-label" for="page-range">页码范围 <span>留空表示全部</span></label><input id="page-range" type="text" placeholder="例如 1-3,5" autocomplete="off"><p class="office-note">按填写顺序处理。拆分最多 150 页，转图片一次最多 40 页。</p></div><p class="office-note">合并按文件列表顺序，至少添加两份 PDF。加密文件请先解除密码。</p></div>
+     <div class="local-engine-badge"><svg><use href="#i-shield"/></svg>转换组件按需加载 · 文件留在本机</div>
+    </div>
+    <div class="settings-bottom"><button class="primary convert-button" id="convert-button" disabled><svg><use href="#i-swap"/></svg><span>开始转换</span><svg><use href="#i-arrow"/></svg></button><p id="conversion-hint">添加文件后，即可开始转换</p></div>
+   </section>
+  </div>
+  <section id="file-queue" class="panel file-queue" hidden><div class="queue-heading"><h3>文件列表 <span id="file-count"></span></h3><div><button id="clear-files">清空</button><button id="download-all" hidden><svg><use href="#i-download"/></svg>全部下载</button></div></div><ul id="file-list"></ul></section>
+  <section class="quick-section"><div class="section-heading"><h2>常用转换<span>一步直达，刚刚好</span></h2><span class="quick-caption">为你的日常准备</span></div><div class="quick-grid">
+   <button class="quick-card" data-quick data-target="pdfword"><span class="quick-icon blue"><svg><use href="#i-doc"/></svg></span><span><b>PDF 转 Word</b><small>提取文字，继续编辑</small></span><svg class="quick-arrow"><use href="#i-arrow"/></svg></button>
+   <button class="quick-card" data-quick data-target="wordpdf"><span class="quick-icon coral"><svg><use href="#i-doc"/></svg></span><span><b>Word 转 PDF</b><small>页面外观，方便分享</small></span><svg class="quick-arrow"><use href="#i-arrow"/></svg></button>
+   <button class="quick-card" data-quick data-target="pdftools" data-format="jpgzip"><span class="quick-icon purple"><svg><use href="#i-image"/></svg></span><span><b>PDF 转图片</b><small>逐页导出，打包下载</small></span><svg class="quick-arrow"><use href="#i-arrow"/></svg></button>
+   <button class="quick-card" data-quick data-target="pdftools" data-format="merge"><span class="quick-icon green"><svg><use href="#i-doc"/></svg></span><span><b>PDF 合并</b><small>多份文档，合为一份</small></span><svg class="quick-arrow"><use href="#i-arrow"/></svg></button>
+  </div></section>
+  <section class="benefits"><div><span class="benefit-symbol">↗</span><span><b>打开即用</b><small>无需安装，随时开始</small></span></div><div><svg><use href="#i-shield"/></svg><span><b>隐私优先</b><small>本地转换，文件不上传</small></span></div><div><span class="devices-icon">▱</span><span><b>大小屏，都顺手</b><small>手机、平板、电脑都能用</small></span></div></section>
+ </section>
+ <section id="history-view" hidden><div class="history-intro"><div class="eyebrow">YOUR RECENT ACTIVITY</div><h1>每一次转换，<span>都有迹可循。</span></h1><p>仅在当前设备保存最近 30 条记录，不保留文件内容。</p></div><div class="panel history-panel"><div class="queue-heading"><h3>最近转换</h3><button id="clear-history">清除记录</button></div><div id="history-list"></div></div></section>
+ <footer><span>© <span id="year"></span> 转转 FileFlow</span><span>让每一个格式，都有更多可能。<span class="footer-dot">✦</span></span><button id="privacy-open">隐私说明 <svg><use href="#i-arrow"/></svg></button></footer>
+ </main>
+</div>
+<dialog id="help-dialog"><div class="dialog-heading"><h2>简单三步，轻松转换</h2><button class="icon-button" data-close aria-label="关闭"><svg><use href="#i-close"/></svg></button></div><div class="help-steps"><p><b>01 选择文件</b>选择左侧文件类型，点击上传或拖入文件。手机上可直接从照片或文件中选择。</p><p><b>02 设置格式</b>选择目标格式。图片可调整质量与尺寸；选择 PDF 时，会将全部图片合成一份文档。</p><p><b>03 转换并下载</b>点击开始转换，完成后可逐个下载。手机浏览器可能会先打开预览，请使用分享菜单存储文件。</p></div><div class="info-box">支持 PDF 转 Word（.docx）、Word（.docx）转 PDF、PDF 合并／拆分／提取页面／转 JPG，并保留图片、文本和 CSV／JSON 转换。可编辑 Word 模式提取文字，复杂表格与分栏可能需调整；保留版式模式输出页面图片，不可编辑。Word 转 PDF 为图片页，文字不可选取。扫描件 OCR、旧版 .doc、Excel、PPT 和视频转换暂未提供。</div><button class="primary dialog-confirm" data-close>明白了，开始使用</button></dialog>
+<dialog id="privacy-dialog"><div class="dialog-heading"><h2>你的文件，留在你的设备</h2><button class="icon-button" data-close aria-label="关闭"><svg><use href="#i-close"/></svg></button></div><p>转换完全在浏览器内完成，我们不会将你选择的文件上传到服务器。关闭或刷新页面后，内存中的源文件与转换结果会释放。</p><p>「最近转换」仅在此浏览器保存文件名称、格式、大小和转换时间。你可以随时清除记录。请不要使用不受信任的 SVG 文件。</p><button class="primary dialog-confirm" data-close>知道了</button></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+</body></html>
