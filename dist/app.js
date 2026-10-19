@@ -99,7 +99,7 @@ function renderFiles() {
  $('#download-all').disabled=!batchResult;
  $('#download-all').innerHTML=svg('download')+(batchPreparing?'正在打包…':'保存全部 ZIP');
  $('#save-guidance').hidden=!completed.length;
- $('#save-guidance-text').textContent=batchError||'手机保存建议使用系统分享。若要求切换到其他浏览器，请先在那个浏览器打开工具并重新转换。';
+ $('#save-guidance-text').textContent=batchError||'安卓直接下载，iPhone 可通过系统分享存储到文件。下载没有反应时，请点“保存遇到问题？”尝试兼容下载。';
  $('#convert-button').disabled=!files.length||busy;
  $('#convert-button span').textContent=busy?'正在转换…':files.length&&files.every(f=>f.state==='done')?'重新转换':'开始转换';
  $('#conversion-hint').textContent=busy?'正在本地处理，请保持页面打开':files.length?`已添加 ${files.length} 个文件 · 转换后即可下载`:'添加文件后，即可开始转换';
