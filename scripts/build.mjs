@@ -4,6 +4,7 @@ import path from 'node:path';
 const root=path.resolve(import.meta.dirname,'..');
 await mkdir(path.join(root,'dist/vendor'),{recursive:true});
 await build({entryPoints:[path.join(root,'src/office.js')],bundle:true,minify:true,format:'esm',target:['es2022'],outfile:path.join(root,'dist/office.js'),legalComments:'eof'});
+await build({entryPoints:[path.join(root,'src/archive.js')],bundle:true,minify:true,format:'esm',target:['es2022'],outfile:path.join(root,'dist/archive.js'),legalComments:'eof'});
 const pdfRoot=path.join(root,'node_modules/pdfjs-dist');
 await copyFile(path.join(pdfRoot,'build/pdf.worker.min.mjs'),path.join(root,'dist/vendor/pdf.worker.min.js'));
 await rm(path.join(root,'dist/vendor/pdf.worker.min.mjs'),{force:true});

@@ -4,7 +4,7 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f7f9fc"><meta name="description" content="转转 FileFlow：手机、电脑都能用的 PDF 转 Word、Word 转 PDF、PDF 合并拆分与图片转换工具。文件在浏览器本地处理，无需上传。">
   <title>转转 FileFlow · 让文件，自由转换</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><script src="app.js" defer></script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><script src="downloads.js?v=20261020" defer></script><script src="app.js?v=20261020-save" defer></script>
 </head>
 <body>
 <svg class="svg-library" xmlns="http://www.w3.org/2000/svg"><defs>
@@ -43,7 +43,7 @@
  <section id="tools-view">
   <div class="intro"><div><div class="eyebrow"><span></span> YOUR EVERYDAY DOCUMENT TOOLS</div><h1>让文档，<span>自由转换。</span></h1><p>PDF、Word，工作里最常用的格式，一站轻松处理。</p></div><div class="intro-art" aria-hidden="true"><span class="art-orbit"></span><span class="art-file art-file-back">WORD<span></span></span><span class="art-file art-file-front"><svg><use href="#i-doc"/></svg><b>PDF</b></span><span class="art-swap"><svg><use href="#i-swap"/></svg></span><span class="art-star">✧</span><i></i></div></div>
   <div class="converter-top"><h2 id="category-heading"><svg><use href="#i-doc"/></svg>PDF 转 Word</h2><span class="small-note"><svg><use href="#i-shield"/></svg>无需上传 · 本地转换</span></div>
-  <div class="conversion-grid">
+  <div id="mobile-save-tip" class="mobile-save-tip" hidden>你正在应用内打开工具。若保存时要求跳转浏览器，请先在 Chrome 或 Safari 中打开本网站，再添加文件转换。</div><div class="conversion-grid">
    <section class="upload-panel panel"><div class="panel-heading"><h3><span class="step">1</span>添加文件</h3><span>支持批量转换</span></div>
     <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-label="选择或拖入文件"><div class="upload-art" aria-hidden="true"><span class="mini-file back"></span><span class="mini-file front"><svg><use href="#i-upload"/></svg></span><span class="upload-plus">+</span></div><h3>把文件拖到这里</h3><p id="upload-guidance">请选择需要转换为 Word 的 PDF 文件</p><button class="primary choose-button" id="choose-files"><svg><use href="#i-upload"/></svg>选择文件<span>＋</span></button><p class="upload-limit">每个文件最大 50 MB · 一次最多 20 个</p><div class="supported-formats" id="supported-formats"></div></div>
     <input id="file-input" type="file" multiple hidden><div class="upload-foot"><span><svg><use href="#i-shield"/></svg>文件不会离开你的设备</span><button id="try-sample">试试示例文件 <span>↗</span></button></div>
@@ -61,7 +61,7 @@
     <div class="settings-bottom"><button class="primary convert-button" id="convert-button" disabled><svg><use href="#i-swap"/></svg><span>开始转换</span><svg><use href="#i-arrow"/></svg></button><p id="conversion-hint">添加文件后，即可开始转换</p></div>
    </section>
   </div>
-  <section id="file-queue" class="panel file-queue" hidden><div class="queue-heading"><h3>文件列表 <span id="file-count"></span></h3><div><button id="clear-files">清空</button><button id="download-all" hidden><svg><use href="#i-download"/></svg>全部下载</button></div></div><ul id="file-list"></ul></section>
+  <section id="file-queue" class="panel file-queue" hidden><div class="queue-heading"><h3>文件列表 <span id="file-count"></span></h3><div><button id="clear-files">清空</button><button id="download-all" hidden><svg><use href="#i-download"/></svg>全部下载</button></div></div><ul id="file-list"></ul><div id="save-guidance" class="save-guidance" hidden><span id="save-guidance-text"></span><button id="save-help">保存遇到问题？</button></div></section>
   <section class="quick-section"><div class="section-heading"><h2>常用转换<span>一步直达，刚刚好</span></h2><span class="quick-caption">为你的日常准备</span></div><div class="quick-grid">
    <button class="quick-card" data-quick data-target="pdfword"><span class="quick-icon blue"><svg><use href="#i-doc"/></svg></span><span><b>PDF 转 Word</b><small>提取文字，继续编辑</small></span><svg class="quick-arrow"><use href="#i-arrow"/></svg></button>
    <button class="quick-card" data-quick data-target="wordpdf"><span class="quick-icon coral"><svg><use href="#i-doc"/></svg></span><span><b>Word 转 PDF</b><small>页面外观，方便分享</small></span><svg class="quick-arrow"><use href="#i-arrow"/></svg></button>
@@ -74,7 +74,7 @@
  <footer><span>© <span id="year"></span> 转转 FileFlow</span><span>让每一个格式，都有更多可能。<span class="footer-dot">✦</span></span><button id="privacy-open">隐私说明 <svg><use href="#i-arrow"/></svg></button></footer>
  </main>
 </div>
-<dialog id="help-dialog"><div class="dialog-heading"><h2>简单三步，轻松转换</h2><button class="icon-button" data-close aria-label="关闭"><svg><use href="#i-close"/></svg></button></div><div class="help-steps"><p><b>01 选择文件</b>选择左侧文件类型，点击上传或拖入文件。手机上可直接从照片或文件中选择。</p><p><b>02 设置格式</b>选择目标格式。图片可调整质量与尺寸；选择 PDF 时，会将全部图片合成一份文档。</p><p><b>03 转换并下载</b>点击开始转换，完成后可逐个下载。手机浏览器可能会先打开预览，请使用分享菜单存储文件。</p></div><div class="info-box">支持 PDF 转 Word（.docx）、Word（.docx）转 PDF、PDF 合并／拆分／提取页面／转 JPG，并保留图片、文本和 CSV／JSON 转换。可编辑 Word 模式提取文字，复杂表格与分栏可能需调整；保留版式模式输出页面图片，不可编辑。Word 转 PDF 为图片页，文字不可选取。扫描件 OCR、旧版 .doc、Excel、PPT 和视频转换暂未提供。</div><button class="primary dialog-confirm" data-close>明白了，开始使用</button></dialog>
+<dialog id="help-dialog"><div class="dialog-heading"><h2>简单三步，轻松转换</h2><button class="icon-button" data-close aria-label="关闭"><svg><use href="#i-close"/></svg></button></div><div class="help-steps"><p><b>01 选择文件</b>选择左侧文件类型，点击上传或拖入文件。手机上可直接从照片或文件中选择。</p><p><b>02 设置格式</b>选择目标格式。图片可调整质量与尺寸；选择 PDF 时，会将全部图片合成一份文档。</p><p><b>03 转换并下载</b>点击开始转换，完成后点“保存”。手机支持时会打开系统文件分享：iPhone 选择“存储到文件”，安卓选择保存文件的应用。多份结果可一次保存为 ZIP。切换到另一浏览器后需要重新转换，文件不会跟随跳转。</p></div><div class="info-box">支持 PDF 转 Word（.docx）、Word（.docx）转 PDF、PDF 合并／拆分／提取页面／转 JPG，并保留图片、文本和 CSV／JSON 转换。可编辑 Word 模式提取文字，复杂表格与分栏可能需调整；保留版式模式输出页面图片，不可编辑。Word 转 PDF 为图片页，文字不可选取。扫描件 OCR、旧版 .doc、Excel、PPT 和视频转换暂未提供。</div><button class="primary dialog-confirm" data-close>明白了，开始使用</button></dialog>
 <dialog id="privacy-dialog"><div class="dialog-heading"><h2>你的文件，留在你的设备</h2><button class="icon-button" data-close aria-label="关闭"><svg><use href="#i-close"/></svg></button></div><p>转换完全在浏览器内完成，我们不会将你选择的文件上传到服务器。关闭或刷新页面后，内存中的源文件与转换结果会释放。</p><p>「最近转换」仅在此浏览器保存文件名称、格式、大小和转换时间。你可以随时清除记录。请不要使用不受信任的 SVG 文件。</p><button class="primary dialog-confirm" data-close>知道了</button></dialog>
 <div id="toast" role="status" aria-live="polite"></div>
 </body></html>
