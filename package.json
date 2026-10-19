@@ -1,0 +1,16 @@
+{
+  "name": "fileflow",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "node scripts/build.mjs" },
+  "dependencies": {
+    "docx": "9.12.0",
+    "docx-preview": "0.4.1",
+    "fflate": "0.8.3",
+    "html2canvas": "1.4.1",
+    "pdf-lib": "1.17.1",
+    "pdfjs-dist": "6.4.299"
+  },
+  "devDependencies": { "esbuild": "0.28.2" }
+}
